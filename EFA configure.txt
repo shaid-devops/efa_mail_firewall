@@ -1,0 +1,44 @@
+System requirements
+
+A dedicated system for eFa5
+CentOS 9 Stream or equivalent (minimal install required)
+2 CPU’s
+100GB of hard-drive space (SSD highly preferred)
+8GB memory (dedicated)
+
+
+
+
+
+>>>> Login with root user <<<<
+
+>>>> After installing centOS 9 we have set the hostname and update the 'A' record and 'MX' record <<<<
+
+# vim /etc/hostname
+
+antispam
+
+# vim /etc/hosts
+<IP_address> antispam.domain.com antispam
+
+
+>>>>>>>> check hostnames <<<<<<<<<<<<<<
+
+# hostname
+# hostname -f
+
+
+>> check if seLinux is enabled
+
+# getenforce
+
+
+
+
+>>> now download and run the script to with root user <<<
+
+curl -sSL https://install.efa-project.org | bash
+
+
+>>> After the completing script the server will reboot and follow the further setup instructions <<<
+
