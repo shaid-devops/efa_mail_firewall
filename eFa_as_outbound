@@ -84,3 +84,25 @@ AHJlbGF5bWFpbDEAUmVsYXlNYWlsMDAx          [ USER INPUT ]
 
 
 
+Setup the mail relay in eFa relay user server
+----------------------------------------------
+
+# vim /etc/postfix/smtp_sasl_password
+
+[antispam.shadhincloud.com]:25 relaymail1:RelayMail001
+[<domain.com>]:<port> <username>:<password>
+
+
+< Note: never remove these [] third brackets. here username means only username. don't use username@domain.com >
+
+
+# postmap /etc/postfix/smtp_sasl_password
+
+# vim /etc/postfix/main.cf
+
+relayhost = [antispam.shadhincloud.com]:25
+smtp_sasl_auth_enable = yes
+smtp_sasl_password_maps = hash:/etc/postfix/smtp_sasl_password
+smtp_sasl_security_options = noanonymous
+smtp_sasl_tls_security_options = noanonymous
+compatibility_level = 2
