@@ -25,3 +25,62 @@ service auth {
 
 
 # vim /etc/dovecot/conf.d/10-auth.conf
+
+
+disable_plaintext_auth = no
+auth_mechanisms = plain login
+
+
+# useradd <relayuser> -s /sbin/nologin
+# passwd <relayuser>
+
+# sudo systemctl restart postfix
+# sudo systemctl restart dovecot
+
+
+# sudo systemctl status postfix
+# sudo systemctl status dovecot
+
+
+
+
+
+Testing relay server user auth
+---------------------------------
+
+# echo -ne '\0relaymail1\0RelayMail001' | openssl base64
+AHJlbGF5bWFpbDEAUmVsYXlNYWlsMDAx                            [ generated output ]
+
+
+# telnet antispam.shadhincloud.com 25
+
+Trying 103.131.144.82...
+Connected to antispam.shadhincloud.com.
+Escape character is '^]'.
+220 antispam.shadhincloud.com ESMTP Postfix
+EHLO antispam.shadhincloud.com            [ USER INPUT ]
+250-antispam.shadhincloud.com
+250-PIPELINING
+250-SIZE 133169152
+250-ETRN
+250-STARTTLS
+250-AUTH PLAIN LOGIN
+250-ENHANCEDSTATUSCODES
+250-8BITMIME
+250-DSN
+250 SMTPUTF8
+AUTH PLAIN                                [ USER INPUT ]
+334
+AHJlbGF5bWFpbDEAUmVsYXlNYWlsMDAx          [ USER INPUT ]
+235 2.7.0 Authentication successful
+
+
+
+
+
+[ Note: If the test is successful, then test it by applying on a mail client server as shown below ]
+
+
+
+
+
