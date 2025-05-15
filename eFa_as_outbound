@@ -1,0 +1,27 @@
+Setup the eFa_server
+----------------------------------------------
+
+# vim /etc/postfix/main.cf
+
+mynetworks = 127.0.0.0/8 <IP of Relay user>
+
+smtpd_sasl_type = dovecot
+smtpd_sasl_path = private/auth
+smtpd_sasl_auth_enable = yes
+smtpd_sasl_security_options = noanonymous
+smtp_sasl_security_options = noanonymous
+
+
+# vim /etc/dovecot/conf.d/10-master.conf
+
+
+service auth {
+    unix_listener /var/spool/postfix/private/auth {
+        mode = 0660
+        user = postfix
+        group = postfix
+    }
+}
+
+
+# vim /etc/dovecot/conf.d/10-auth.conf
