@@ -3,7 +3,6 @@ Setup the eFa_server
 
 # vim /etc/postfix/main.cf
 
-mynetworks = 127.0.0.0/8 <IP of Relay user>
 
 smtpd_sasl_type = dovecot
 smtpd_sasl_path = private/auth
