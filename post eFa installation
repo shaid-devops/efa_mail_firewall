@@ -1,0 +1,10 @@
+Supress daily DMARC reports
+--------------------------------
+
+eFa sends daily DMARC reports to suppress or disable this
+
+# vim /etc/sysconfig/eFa-Daily-DMARC
+
+SENDREPORTS="no"
+
+
