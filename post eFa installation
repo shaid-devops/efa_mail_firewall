@@ -8,3 +8,11 @@ eFa sends daily DMARC reports to suppress or disable this
 SENDREPORTS="no"
 
 
+Quarantine full mail with queue
+--------------------------------
+
+# vi /etc/MailScanner/MailScanner.conf
+
+Deliver Cleaned Messages = no      [ may set 'yes' on situation ]
+Quarantine Whole Message = yes
+Quarantine Whole Messages As Queue Files = yes
