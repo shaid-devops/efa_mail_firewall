@@ -8,11 +8,12 @@ eFa sends daily DMARC reports to suppress or disable this
 SENDREPORTS="no"
 
 
-Quarantine full mail with queue
---------------------------------
+Quarantine full mail with queue for outbound mail relay
+--------------------------------------------------------
 
 # vi /etc/MailScanner/MailScanner.conf
 
-Deliver Cleaned Messages = no      [ may set 'yes' on situation ]
+$release_as_sender = true;                      #[ Not tested. can add to release outbound mails from the original sender details, instead of no-reply@domain.tld ]
 Quarantine Whole Message = yes
-Quarantine Whole Messages As Queue Files = yes
+Quarantine Whole Messages As Queue Files = no
+Deliver Cleaned Messages = No
