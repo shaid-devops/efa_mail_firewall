@@ -1,0 +1,10 @@
+
+Error 1: The server response was: 450 4.7.1 Client host rejected: cannot find your reverse hostname,
+--------------------------------------------------------------------------------------------------------------
+
+# vim /etc/postfix/main.cf
+
+smtpd_client_restrictions = permit_sasl_authenticated, reject_rbl_client zen.spamhaus.org, reject_unknown_reverse_client_hostname
+
+
+[ removing reject_unknown_reverse_client_hostname got things moving again ]
