@@ -1,44 +1,9 @@
-SSH via root
-
-
-# eFa-Configure
-
-
-To increase MailScanner Process
-------------------------------------
-# eFa-Configure
-
-select 5 "Tunables"
-then select 1 "Modify MailScanner Children"
-insert number as per need
-
-then select 2 "Modify Processing Attempts"
-insert number as per need
-
-
-Disable Graylisting
-------------------------------------
-select 6 "MailWatch Settings"
-select 1 "Toggle Greylisting"
-
-
-
-
-
-
-Supress daily DMARC reports
---------------------------------
-
-eFa sends daily DMARC reports to suppress or disable this
-
-# vim /etc/sysconfig/eFa-Daily-DMARC
-
-SENDREPORTS="no"
-
-
-
 Release mails with original headers instead of no-reply@domain.tld
 -------------------------------------------------------------------
+
+###############################################################################
+ PTR, SPF and DKIM record should be updated. Else Gmail will block all mails.
+###############################################################################
 
 
 # vim /var/www/html/mailscanner/conf.php
@@ -64,3 +29,73 @@ Deliver Cleaned Messages = No
 
 
 # systemctl restart mailscanner postfix httpd
+
+
+
+
+#############################
+SSH to mail firewall server
+#############################
+
+>>>> At first update the IP address of mail firewall as PTR record <<<<
+
+
+Daily Dmarc report sent config disable
+=================================================
+vim /etc/sysconfig/eFa-Daily-DMARC
+
+SENDREPORTS="yes"
+
+
+
+      Realease mail forward through the original email 
+=================================================
+vim /var/www/html/mailscanner/conf.php
+define('QUARANTINE_USE_SENDMAIL', true);
+
+
+=================================================================================================================================
+( note: Here we can configure the processe number. We can modify mailscanner porcess number and processing attempts. be careful about RAM consumpsion. increase processes gradually )
+Choose 5 for "Tunables"
+>> 5) Tunables
+
+
+Choose 1 for MailScanner process modification and choose 2 for Processing Attempts.
+>> 1) Modify MailScanner Children
+>> 2) Modify Processing Attempts
+=================================================================================================================================
+
+=================================================================================================================================
+Choose 6 for "Mailwatch" settings
+6) MailWatch Settings
+
+Choose 1 for 
+1) Toggle Greylisting
+
+=================================================================================================================================
+
+=================================================================================================================================
+Choose 7 for "Mail Settings"
+7) Mail Settings
+
+Choose 5 for "Automated recipient verification" settings
+5) Automated recipient verification
+
+Choose Y to "enable" the option
+
+=================================================================================================================================
+
+=================================================================================================================================
+Choose 18 to configure Fail2Ban
+18) Fail2Ban
+
+Choose Y to "enable" the option
+
+=================================================================================================================================
+
+=================================================================================================================================
+Choose 19 to configure "Auto-Backup"
+19) Auto-Backup settings
+
+Choose "N" to keep this enable or read before enter.
+=================================================================================================================================
