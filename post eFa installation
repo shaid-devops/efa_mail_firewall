@@ -1,3 +1,31 @@
+SSH via root
+
+
+# eFa-Configure
+
+
+To increase MailScanner Process
+------------------------------------
+# eFa-Configure
+
+select 5 "Tunables"
+then select 1 "Modify MailScanner Children"
+insert number as per need
+
+then select 2 "Modify Processing Attempts"
+insert number as per need
+
+
+Disable Graylisting
+------------------------------------
+select 6 "MailWatch Settings"
+select 1 "Toggle Greylisting"
+
+
+
+
+
+
 Supress daily DMARC reports
 --------------------------------
 
