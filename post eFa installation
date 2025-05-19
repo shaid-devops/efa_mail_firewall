@@ -13,7 +13,7 @@ Quarantine full mail with queue for outbound mail relay
 
 # vi /etc/MailScanner/MailScanner.conf
 
-$release_as_sender = true;                      #[ Not tested. can add to release outbound mails from the original sender details, instead of no-reply@domain.tld ]
+$release_as_sender = true;                      #[ Not tested. use is depricateable. can add to release outbound mails from the original sender details, instead of no-reply@domain.tld ]
 Quarantine Whole Message = yes
 Quarantine Whole Messages As Queue Files = no
 Deliver Cleaned Messages = No
