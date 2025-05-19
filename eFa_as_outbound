@@ -86,6 +86,18 @@ AHJlbGF5bWFpbDEAUmVsYXlNYWlsMDAx          [ USER INPUT ]
 Setup the mail relay in eFa relay user server
 ----------------------------------------------
 
+
+>>> Install sasl lib packages in the mail server <<<
+
+		-- CentOS --
+# sudo yum install cyrus-sasl cyrus-sasl-lib cyrus-sasl-plain
+
+		-- Ubuntu --
+
+# sudo apt -y install libsasl2-modules
+
+
+
 # vim /etc/postfix/smtp_sasl_password
 
 [antispam.shadhincloud.com]:25 relaymail1:RelayMail001
@@ -105,3 +117,18 @@ smtp_sasl_password_maps = hash:/etc/postfix/smtp_sasl_password
 smtp_sasl_security_options = noanonymous
 smtp_sasl_tls_security_options = noanonymous
 compatibility_level = 2
+
+
+
+# vim /etc/postfix/mynetwork
+
+
+<relaymail_IP_series>/cidr
+10.140.8.0/24
+
+	OR
+# vim /etc/postfix/main.cnf
+mynetworks = 127.0.0.0/8 10.140.8.0/24 <relaymail_IP_series>/cidr
+
+
+# postfix reload
