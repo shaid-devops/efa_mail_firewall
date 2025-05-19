@@ -1,0 +1,49 @@
+        Step-1
+----------------------
+SSH the antispam mail firewall server.
+
+# sudo su
+# eFa-Configure
+
+
+Choose 7 for "Mail Settings"
+>> 7) Mail Settings
+
+
+Choose 4 for "Transport settings"
+>> 4) Transport settings
+
+
+Choose n for " Add new mail domain "
+>> n) Add new mail domain
+
+
+Enter the client main domain
+>> Please enter the domain you want add:
+>> [Domain] : <clientdomain>.com
+
+
+
+Enter the SMTP server of client domain
+>> Now enter the destination server
+>> [Destination] : <SMTP.client.com>
+
+
+
+        Step-2
+----------------------
+Add the mail firewall domain to the SPF record.
+
+TXT @ IN "v=spf1 a mx ip4:1.2.3.4 a:antispam.<domain>.com ~all"
+
+( note: some time we have to keep only mail firewall MX. no secondary MX. and never forget to add (.) dot at the end of domain address. the (.) dot refers as the end of the domain name. else the mail domain will be added with the firewall domain )
+
+
+
+        Step-3
+-------------------
+At first update MX record with the mail firewall domain and set the least priority to work well.
+
+MX @ IN antispam.<domain>.com.
+
+( note: some time we have to keep only mail firewall MX. no secondary MX. and never forget to add (.) dot at the end of domain address. the (.) dot refers as the end of the domain name. else the mail domain will be added with the firewall domain )
