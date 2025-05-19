@@ -8,6 +8,22 @@ eFa sends daily DMARC reports to suppress or disable this
 SENDREPORTS="no"
 
 
+
+Release mails with original headers instead of no-reply@domain.tld
+-------------------------------------------------------------------
+
+
+# vim /var/www/html/mailscanner/conf.php
+
+define('MAILWATCH_FROM_ADDR', 'no-reply@antispam.shadhincloud.com');
+define('MAILWATCH_HOSTURL', 'https://' . rtrim(gethostname()) . '/mailscanner');
+
+define('QUARANTINE_USE_SENDMAIL', true);
+define('QUARANTINE_SENDMAIL_PATH', '/usr/sbin/sendmail');
+
+
+
+
 Quarantine full mail with queue for outbound mail relay
 --------------------------------------------------------
 
