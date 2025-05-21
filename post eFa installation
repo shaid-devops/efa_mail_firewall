@@ -99,3 +99,16 @@ Choose 19 to configure "Auto-Backup"
 
 Choose "N" to keep this enable or read before enter.
 =================================================================================================================================
+
+
+
+
+
+
+##########################################
+Increase process number of unbound (DNS)
+##########################################
+
+# vim /etc/unbound/unbound.conf
+
+num-threads: 50
