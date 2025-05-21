@@ -54,6 +54,44 @@ vim /var/www/html/mailscanner/conf.php
 define('QUARANTINE_USE_SENDMAIL', true);
 
 
+
+
+
+
+
+
+
+######################################
+eFa-configure panel changes
+######################################
+
+# eFa-Configure
+
+
+DNS configuration
+=================================================================================================================================
+Choose 4 for "IP Settings"
+>> 4) IP Settings
+
+>> 2) IPV6 Method
+
+set N to ignore
+
+>> 10) DNS recursion
+
+Disable
+
+>> 11)  Primary DNS
+127.0.0.1
+
+>> 11)  Secondary DNS
+8.8.8.8
+
+>> y) Make Changes  [ to apply these configuration ]
+
+[ Note: if the " cat /etc/resolv.conf " get only "127.0.0.1". Then use "nmtui" to manually add secondary DNS as "8.8.8.8" ]
+
+
 =================================================================================================================================
 ( note: Here we can configure the processe number. We can modify mailscanner porcess number and processing attempts. be careful about RAM consumpsion. increase processes gradually )
 Choose 5 for "Tunables"
