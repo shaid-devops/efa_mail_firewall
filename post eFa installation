@@ -92,6 +92,11 @@ Disable
 [ Note: if the " cat /etc/resolv.conf " get only "127.0.0.1". Then use "nmtui" to manually add secondary DNS as "8.8.8.8" ]
 
 
+[ Test ]
+Now run
+
+dig <domain>           [ see if it resolve with 8.8.8.8 or not ]
+
 =================================================================================================================================
 ( note: Here we can configure the processe number. We can modify mailscanner porcess number and processing attempts. be careful about RAM consumpsion. increase processes gradually )
 Choose 5 for "Tunables"
