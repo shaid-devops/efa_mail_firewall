@@ -112,3 +112,5 @@ Increase process number of unbound (DNS)
 # vim /etc/unbound/unbound.conf
 
 num-threads: 50
+
+# systemctl restart unbound
